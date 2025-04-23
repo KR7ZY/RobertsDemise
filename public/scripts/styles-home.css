@@ -1,0 +1,143 @@
+/* definitions */
+:root {
+    --primary-bg-a: #E4E0E1; --primary-bg-B: #c7bdb9; --primary-text-a: #464545; --primary-text-b: #2c2c2c;
+    --secondary-text-a: #f8f7f7;
+    --secondary-bg-a: #464545; --primary-font-a: "delilah-bold"; --primary-font-b: "quicksand-bold";
+    --tertiary-bg-a: #f8f7f7;
+
+    /* offsets */
+    --header-size: 3.5rem; --header-offset: 1rem;
+}
+
+/* fonts */
+@font-face {
+    font-family: "delilah-bold";
+    src: url(../assets/fonts/lt_delilah/LTDelilah-Bold.ttf);
+}@font-face {
+    font-family: "quicksand-bold";
+    src: url(../assets/fonts/quicksand/Quicksand_Bold.otf);
+}
+
+/* info */
+.info {width: 100vw; height: 0;} .info h1 {
+    font-size: 1rem; width: 100%; text-align: center; font-family: var(--primary-font-b);
+    transform: translate(0,-60%); background-color: var(--primary-bg-B); color: var(--primary-text-a);
+}
+
+/* containers */
+html,body {
+    margin: 0; padding: 0; width: 100vw; background-color: var(--primary-bg-a)
+}
+.topbar {
+    z-index: 10; overflow-x: hidden; top: var(--header-offset);
+    display: flex; position: fixed; flex-direction: row; justify-content: space-between; align-items: center; width: 100vw;
+    font-size: 0.8rem; text-wrap-mode: nowrap; background-color: green; height: 4rem; font-family: var(--primary-font-a);
+    background-color: var(--primary-bg-B); color: var(--primary-text-a); max-height: var(--header-size);
+} .topbar-left, .topbar-middle, .topbar-right {
+    display: flex; flex-direction: row; justify-content: center; align-items: center; height: 100%;
+    transition: width 0.1s ease-in-out, opacity 0.1s ease-in-out;
+} .hamburger {
+    display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;
+    transition: width 0.1s ease-in-out, opacity 0.1s ease-in-out;
+}
+.topbar-middle h1 {
+    margin-inline: 2rem;
+    background-image: linear-gradient(var(--primary-text-a), var(--primary-text-a)); background-size: 0% 2px; background-repeat: no-repeat;
+    background-position-y: bottom; transition: background-size 0.1s ease-in-out, transform 0.1s ease-in-out;
+} .hamburger .dropdown {
+    height: 0; opacity: 0; background-color: var(--primary-bg-B); width: 10vw; text-align: center; position: fixed;
+} .topbar-right svg {
+    transition: transform 0.1s ease-in-out, rotate 10s ease-in-out;
+} .topbar-left img {
+    height: 3rem; border-radius: 100vw; margin-inline: 1rem;
+}
+
+/* topbar effects */
+.topbar-left:hover {cursor: default;}
+.topbar-middle h1:hover, .hamburger .dropdown h1:hover {transform: scale(105%); cursor: pointer; background-size: 100% 2px;}
+.topbar-right svg:hover {transform: scale(105%); cursor: pointer; rotate: 3600deg;}
+@media (max-width: 1000px) {
+    .topbar-middle {opacity: 0%; position: fixed; width: 0; pointer-events: none;}
+    .topbar-left, .topbar-right {width: 45vw;}
+    .hamburger {width: 10vw; opacity: 100%;}
+} @media (min-width: 1000px) {
+    .topbar-middle {width: 60vw; opacity: 100%;}
+    .topbar-left, .topbar-right {width: 20vw;}
+    .hamburger {width: 0; opacity: 0%; pointer-events: none;}
+}
+
+/* content */
+.content {
+    transform: translate(0, calc(var(--header-size) - 4px));
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    transition: transform 0.1s ease-in-out; font-family: var(--primary-font-b); width: 100vw; overflow-x: hidden; overflow-y: hidden;
+} .content h1 { font-size: 1.5rem; }
+.top-card {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100vw; height: 100vh;
+    background-size: cover; color: var(--secondary-text-a); opacity: 0.8; background-position-x: center;
+    background-image: url("../assets/images/home/SL\ square.png"); background-color: rgb(0,0,0,0.5);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0));
+} .top-card h1 {
+    background-color: rgb(0,0,0,0.9); border-radius: 10px; padding: 1rem 0; text-align: center; margin-inline: 1rem; opacity: 0.7;
+    transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
+
+/* diary browser */
+.diary-browser {
+    display: flex; flex-direction: row; align-items: center; justify-content: space-around; width: 100vw; height: 100vh;
+} .diary-card {
+    display: flex; flex-direction: column; justify-content: space-around; align-items: center;
+    background-image: url("../assets/images/SL\ phone.jpg"); background-position-x: center; background-size: cover;
+    height: 75%; aspect-ratio: 1/2; border-radius: 20px;
+    transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out; opacity: 0.9;
+} .diary-card h1 {
+    width: 100%; background-color: rgba(0, 0, 0, 0.7); text-align: center; color: var(--secondary-text-a);
+} .arrow-buttons {
+    display: flex; flex-direction: row; align-items: center; justify-content: space-between;
+    width: 100%; height: 100%;
+} .right-arrow {rotate: 270deg;}
+.left-arrow {rotate: 90deg;}
+.arrow-buttons svg {
+    aspect-ratio: 1; border-radius: 100vw;
+    background-color: var(--tertiary-bg-a); transition: transform 0.25s ease-in-out;
+} .diary-content {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    background-color: var(--primary-bg-B); border-radius: 20px;
+    height: 75%; aspect-ratio: 1;
+} .diary-content .description {
+    text-align: left; color: var(--primary-text-b); height: 90%; width: 90%;
+} .diary-content .link {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; color: var(--primary-text-b); transition: transform 0.25s ease-in-out;
+    background-color: var(--primary-bg-a); border-radius: 100vw; padding-inline: 2rem;
+    height: 3rem;
+}
+
+/* diary effects */
+.diary-card:hover {
+    transform: scale(102%); opacity: 1;
+} .arrow-buttons svg:hover {
+    transform: scale(105%); opacity: 1;
+    cursor: pointer;
+} .diary-content .link:hover {
+    cursor: pointer;
+    transform: scale(105%);
+} @media (max-width: 850px) {
+    .diary-browser {flex-direction: column; height: 200vh;}
+    .diary-content {aspect-ratio: 1/2; height: 50%;}
+} 
+
+/* content effects */
+.top-card h1:hover {cursor: default; transform: scale(105%); opacity: 1;}
+@media (max-width: 500px) {
+    @media (min-height: 500px) {
+        .top-card {
+            background-image: url("../assets/images/home/SL\ phone.jpg");
+        }
+    }
+}
+@media (min-width: 500px) {
+    .top-card {
+        background-image: url("../assets/images/home/SL\ desktop.png");
+    }
+}
