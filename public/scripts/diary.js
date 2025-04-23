@@ -21,7 +21,7 @@ const blogs = {
         "Blender": {
             "Card": {
                 "title": "Blender",
-                "description": "Rigging and refining team-made assets."
+                "description": "Rigging and refining team-made assetss."
             },
             "Blog": {
 
