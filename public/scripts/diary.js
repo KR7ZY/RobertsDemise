@@ -21,16 +21,7 @@ const blogs = {
         "Blender": {
             "Card": {
                 "title": "Blender",
-                "description": "Rigging and refining team-made assetssbbbbb."
-            },
-            "Blog": {
-
-            }
-        },
-        "Blender": {
-            "Card": {
-                "title": "Blender",
-                "description": "Rigging and refining team-made assets."
+                "description": "Rigging and refining team-made assets.sssss"
             },
             "Blog": {
                 "content": `
