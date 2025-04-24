@@ -104,14 +104,14 @@ const blogs = {
                     <h1 class="description">
                         I attached the "Player" script, which will handle the movement of the character.
                     </h1>
-                    <h1 class="picture" id="Picture1"></h1>
+                    <h1 class="picture" id="picture1"></h1>
                     <h1 class="description">
                         I implemented head turning to the character by moving a sphere in the direction of the camera and making a bone in my character face it using Unity's animation rigging package.
                     </h1>
                     <h1 class="description">
                         I then 
                     </h1>
-                    <h1 class="picture" id="Picture2"></h1>
+                    <h1 class="picture" id="picture2"></h1>
                     <h1 class="description">
                         Here is the main code snippet. My favourite part of this functionality is the way the speed lerps from normal to sprint and applies inputs in such a simple way.
                     </h1>
@@ -134,7 +134,7 @@ const blogs = {
                     <h1 class="description">
                         I imporated the cinemachine package from the unity registry, and tweaked in such to match my character scaling and proportions.
                     </h1>
-                    <h1 class="picture" id="Picture3"></h1>
+                    <h1 class="picture" id="picture3"></h1>
                     <h1 class="description">
                         I then tweaked little cinemachine properties like the field of view to make the camera feel better.
                     </h1>
@@ -216,7 +216,7 @@ const blogs = {
                     <h1 class="centre-text">
                         Creating the Github repository
                     </h1>
-                    <h1 class="picture" id="Picture1"></h1>
+                    <h1 class="picture" id="picture1"></h1>
                     <h1 class="description">
                         I created the repository on the Github website and then cloned it to my computer using GitHub Desktop.
                     </h1>
@@ -233,7 +233,7 @@ const blogs = {
                     <h1 class="centre-text">
                         Creating the Itch.io page
                     </h1>
-                    <h1 class="picture" id="Picture2"></h1>
+                    <h1 class="picture" id="picture2"></h1>
                     <h1 class="description">
                         I created the Itch.io page for the game, so that we can upload the game to the website and share it with others. This is a very simple process, and it only took a few minutes to do.
                     </h1>
@@ -241,7 +241,7 @@ const blogs = {
                      <h1 class="centre-text">
                         Creating the Unity project
                     </h1>
-                    <h1 class="picture" id="Picture3"></h1>
+                    <h1 class="picture" id="picture3"></h1>
                     <h1 class="description">
                         I created the Unity project, so that we can start working on the game. This is also a simple process, and it only took a few minutes to do.
                     </h1>
