@@ -1,28 +1,30 @@
+/* definitions */
 :root {
     --primary-bg-a: #E4E0E1; --primary-bg-B: #c7bdb9; --primary-text-a: #464545; --primary-text-b: #2c2c2c;
     --secondary-text-a: #f8f7f7;
     --secondary-bg-a: #464545; --primary-font-a: "delilah-bold"; --primary-font-b: "quicksand-bold";
     --tertiary-bg-a: #f8f7f7;
 
+    /* offsets */
     --header-size: 3.5rem; --header-offset: 1rem;
 }
 
+/* fonts */
 @font-face {
     font-family: "delilah-bold";
-    src: url(/assets/fonts/lt_delilah/LTDelilah-Bold.ttf) format('truetype');
-    font-display: swap;
-}
-@font-face {
+    src: url(../assets/fonts/lt_delilah/LTDelilah-Bold.ttf);
+}@font-face {
     font-family: "quicksand-bold";
-    src: url(/assets/fonts/quicksand/Quicksand_Bold.otf) format('opentype');
-    font-display: swap;
+    src: url(../assets/fonts/quicksand/Quicksand_Bold.otf);
 }
 
+/* info */
 .info {width: 100vw; height: 0;} .info h1 {
     font-size: 1rem; width: 100%; text-align: center; font-family: var(--primary-font-b);
     transform: translate(0,-60%); background-color: var(--primary-bg-B); color: var(--primary-text-a);
 }
 
+/* containers */
 html,body {
     margin: 0; padding: 0; width: 100vw; background-color: var(--primary-bg-a)
 }
@@ -31,12 +33,10 @@ html,body {
     display: flex; position: fixed; flex-direction: row; justify-content: space-between; align-items: center; width: 100vw;
     font-size: 0.8rem; text-wrap-mode: nowrap; background-color: green; height: 4rem; font-family: var(--primary-font-a);
     background-color: var(--primary-bg-B); color: var(--primary-text-a); max-height: var(--header-size);
-}
-.topbar-left, .topbar-middle, .topbar-right {
+} .topbar-left, .topbar-middle, .topbar-right {
     display: flex; flex-direction: row; justify-content: center; align-items: center; height: 100%;
     transition: width 0.1s ease-in-out, opacity 0.1s ease-in-out;
-}
-.hamburger {
+} .hamburger {
     display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;
     transition: width 0.1s ease-in-out, opacity 0.1s ease-in-out;
 }
@@ -44,17 +44,15 @@ html,body {
     margin-inline: 2rem;
     background-image: linear-gradient(var(--primary-text-a), var(--primary-text-a)); background-size: 0% 2px; background-repeat: no-repeat;
     background-position-y: bottom; transition: background-size 0.1s ease-in-out, transform 0.1s ease-in-out;
-}
-.hamburger .dropdown {
+} .hamburger .dropdown {
     height: 0; opacity: 0; background-color: var(--primary-bg-B); width: 10vw; text-align: center; position: fixed;
-}
-.topbar-right svg {
+} .topbar-right svg {
     transition: transform 0.1s ease-in-out, rotate 10s ease-in-out;
-}
-.topbar-left img {
+} .topbar-left img {
     height: 3rem; border-radius: 100vw; margin-inline: 1rem;
 }
 
+/* topbar effects */
 .topbar-left:hover {cursor: default;}
 .topbar-middle h1:hover, .hamburger .dropdown h1:hover {transform: scale(105%); cursor: pointer; background-size: 100% 2px;}
 .topbar-right svg:hover {transform: scale(105%); cursor: pointer; rotate: 3600deg;}
@@ -68,6 +66,7 @@ html,body {
     .hamburger {width: 0; opacity: 0%; pointer-events: none;}
 }
 
+/* content */
 .content {
     transform: translate(0, calc(var(--header-size) - 4px));
     display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
@@ -83,24 +82,19 @@ html,body {
     transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
 }
 
+/* content effects */
 .top-card h1:hover {cursor: default; transform: scale(105%); opacity: 1;}
 
+/* blog */
 .blog {
     display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
     width: 100vw;
 }
 .blog .picture {
-    width: 50vw;
-    /* object-fit: cover; */ /* Removed: Not applicable for background-image */
-    border-radius: 20px;
-    aspect-ratio: 16/9;
-    background-color: var(--primary-bg-B);
-    background-size: cover;
-    background-position: center; /* Combined position-x and position-y */
-    /* background-position-x: center; */ /* Combined above */
-    /* background-position-y: center; */ /* Combined above */
-    margin-left: 25vw;
-    opacity: 0.7;
+    width: 50vw; object-fit: cover; border-radius: 20px; aspect-ratio: 16/9;
+    background-color: var(--primary-bg-B); background-size: cover;
+    background-position-x: center; background-position-y: center;
+    margin-left: 25vw; opacity: 0.7;
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
 }
 .blog .picture:hover {opacity: 1; cursor: pointer; transform: scale(105%);}
