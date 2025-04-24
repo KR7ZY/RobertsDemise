@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pictures.forEach(picture => {
                 const elementID = picture.id;
                 console.log(elementID);
-                picture.style.backgroundImage = `url('assets/images/${diaryName}/${blogName}/${elementID}.png')`;
+                picture.style.backgroundImage = `url('/assets/images/<span class="math-inline">\{diaryName\}/</span>{blogName}/${elementID}.png')`;
             });
 
             // Add functionality for elements with class "link"
