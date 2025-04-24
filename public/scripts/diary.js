@@ -311,22 +311,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const pictures = blogDiv.querySelectorAll(".picture");
             pictures.forEach(picture => {
                 const elementID = picture.id;
-                const imageUrl = `assets/images/${diaryName}/${blogName}/${elementID}.png`;
-            
-                // Debugging: Log the generated URL
-                console.log(`Setting backgroundImage for ${elementID}: ${imageUrl}`);
-            
-                // Check if the image exists before applying it
-                const img = new Image();
-                img.src = imageUrl;
-                img.onload = () => {
-                    picture.style.backgroundImage = `url('${imageUrl}')`;
-                };
-                img.onerror = () => {
-                    console.error(`Image not found: ${imageUrl}`);
-                    // Optionally set a fallback image
-                    picture.style.backgroundImage = `url('assets/images/default.png')`;
-                };
+                console.log(elementID);
+                picture.style.backgroundImage = `url('assets/images/${diaryName}/${blogName}/${elementID}.png')`;
             });
 
             // Add functionality for elements with class "link"

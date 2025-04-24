@@ -92,7 +92,7 @@ html,body {
 }
 .blog .picture {
     width: 50vw; object-fit: cover; border-radius: 20px; aspect-ratio: 16/9;
-    background-color: var(--primary-bg-B); background-size: cover;
+    background-size: cover;
     background-position-x: center; background-position-y: center;
     margin-left: 25vw; opacity: 0.7;
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
