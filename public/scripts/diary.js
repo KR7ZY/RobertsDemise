@@ -254,81 +254,214 @@ const blogs = {
     },
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-    let title = document.title;
-    let parts = title.split('-');
+// --- Configuration ---
+// Use an absolute path from the site root. Assumes 'assets' is in your main deployment folder (e.g., 'public').
+const ASSET_BASE_PATH = '/assets/images';
 
-    let diaryName = parts[0];
-    let blogName = parts[1];
+// --- Helper Functions ---
 
-    console.log(diaryName);
-    console.log(blogName);
+/**
+ * Sets the breadcrumb navigation text.
+ * @param {string} diaryName - The name of the diary.
+ * @param {string|null} blogName - The name of the blog, or null if on diary index.
+ */
+function setBreadcrumbs(diaryName, blogName = null) {
+    const infoDiv = document.querySelector(".info");
+    if (!infoDiv) {
+        console.error("'.info' element not found!");
+        return;
+    }
+    if (blogName) {
+        infoDiv.innerHTML = `<h1>home > diaries > ${diaryName} > ${blogName}</h1>`;
+    } else {
+        infoDiv.innerHTML = `<h1>home > diaries > ${diaryName}</h1>`;
+    }
+}
 
+/**
+ * Renders the index page for a specific diary.
+ * @param {string} diaryName - The name of the diary.
+ * @param {object} diaryData - The data object for the diary from the 'blogs' structure.
+ */
+function renderDiaryIndex(diaryName, diaryData) {
+    const topCardDiv = document.querySelector(".top-card");
     const blogsContainer = document.querySelector(".blogs");
 
-    if (diaryName && !(blogName)) {
-        const infoDiv = document.querySelector(".info");
-        infoDiv.innerHTML = `<h1>home > diaries > ${diaryName}</h1>`;
-    } else if (blogName) {
-        const infoDiv = document.querySelector(".info");
-        infoDiv.innerHTML = `<h1>home > diaries > ${diaryName} > ${blogName}</h1>`;
+    if (!topCardDiv || !blogsContainer) {
+        console.error("Required elements '.top-card' or '.blogs' not found!");
+        return;
     }
 
-    if (blogs[diaryName] && !(blogName)) {
-        const topCardDiv = document.querySelector(".top-card");
-        topCardDiv.innerHTML = `
-                    <h1>diary ~ ${diaryName}<h1>
-                    <h1>newest -> oldest</h1>`;
-        topCardDiv.style.backgroundImage = `url('assets/images/${diaryName}/thumbnail.jpg')`;
-        Object.entries(blogs[diaryName]).forEach(([key, blog]) => {
-            const blogDiv = document.createElement("div");
-            blogDiv.classList.add("blog");
+    setBreadcrumbs(diaryName);
 
-            blogDiv.innerHTML = `
-                <h1 class="title">${blog.Card.title}</h1>
-                <h1 class="description">${blog.Card.description}</h1>
-            `;
+    // Set top card info and background
+    topCardDiv.innerHTML = `
+        <h1>diary ~ ${diaryName}</h1>
+        <h1>newest -> oldest</h1>`; // Consider sorting if needed later
+    const thumbnailUrl = `${ASSET_BASE_PATH}/${diaryName}/thumbnail.jpg`;
+    console.log("Setting diary top card background:", thumbnailUrl);
+    topCardDiv.style.backgroundImage = `url('${thumbnailUrl}')`;
 
-            blogDiv.addEventListener("click", () => {
-                window.location.href = `${diaryName}-${blog.Card.title}.html`;
-            });
+    // Clear previous blogs list (if any)
+    blogsContainer.innerHTML = '';
 
-            blogsContainer.appendChild(blogDiv);
-        });
-    } else if (blogName) {
-        const topCardDiv = document.querySelector(".top-card");
-        topCardDiv.innerHTML = `
-                    <h1>diary ~ ${diaryName}<h1>
-                    <h1>blog ~ ${blogName}<h1>
-                    <h1>blog details last</h1>`;
-        topCardDiv.style.backgroundImage = `url('assets/images/${diaryName}/${blogName}/thumbnail.jpg')`;
-        const blog = blogs[diaryName][blogName];
-        if (blog && blog.Blog) {
-            const blogDiv = document.querySelector(".blog");
-            blogDiv.innerHTML = blog.Blog.content;
-
-            // Set background images for elements with class "picture"
-            const pictures = blogDiv.querySelectorAll(".picture");
-            pictures.forEach(picture => {
-                const elementID = picture.id;
-                console.log(elementID);
-                picture.style.backgroundImage = `url('/assets/images/<span class="math-inline">\{diaryName\}/</span>{blogName}/${elementID}.png')`;
-            });
-
-            // Add functionality for elements with class "link"
-            const links = blogDiv.querySelectorAll(".link");
-            links.forEach(link => {
-                let content = link.textContent.trim();
-                if (!content.startsWith("http://") && !content.startsWith("https://")) {
-                    content = `https://${content}`;
-                }
-                const url = new URL(content);
-                const domainPart = url.hostname.replace(/^www\./, '').replace(/\.\w+$/, ''); // Remove "www." and the top-level domain
-                link.textContent = domainPart;
-                link.addEventListener("click", () => {
-                    window.open(content, "_blank"); // Open the link in a new tab
-                });
-            });
+    // Add each blog card
+    Object.entries(diaryData).forEach(([blogKey, blog]) => { // Using blogKey for clarity
+        if (!blog.Card) {
+            console.warn(`Blog '${blogKey}' in diary '${diaryName}' is missing 'Card' data.`);
+            return; // Skip this blog if card data is missing
         }
+        const blogDiv = document.createElement("div");
+        blogDiv.classList.add("blog"); // Use the singular class as in your HTML example
+
+        blogDiv.innerHTML = `
+            <h1 class="title">${blog.Card.title}</h1>
+            <h1 class="description">${blog.Card.description}</h1>
+        `;
+
+        blogDiv.addEventListener("click", () => {
+            // Assumes your HTML files are named like "DiaryName-BlogTitle.html"
+            window.location.href = `${diaryName}-${blog.Card.title}.html`;
+        });
+
+        blogsContainer.appendChild(blogDiv);
+    });
+}
+
+/**
+ * Renders a specific blog post.
+ * @param {string} diaryName - The name of the diary.
+ * * @param {string} blogName - The name of the blog.
+ * @param {object} blogData - The data object for the specific blog.
+ */
+function renderBlogPost(diaryName, blogName, blogData) {
+    const topCardDiv = document.querySelector(".top-card");
+    const blogContainer = document.querySelector(".blog"); // Assuming one main container for the single blog post view
+
+    if (!topCardDiv || !blogContainer) {
+        console.error("Required elements '.top-card' or '.blog' not found!");
+        return;
+    }
+     if (!blogData.Blog || !blogData.Blog.content) {
+         console.error(`Blog '${blogName}' in diary '${diaryName}' is missing 'Blog' data or 'content'.`);
+         blogContainer.innerHTML = `<h1 class='error'>Blog content not found.</h1>`; // Display error
+         return;
+     }
+
+    setBreadcrumbs(diaryName, blogName);
+
+    // Set top card info and background
+    topCardDiv.innerHTML = `
+        <h1>diary ~ ${diaryName}</h1>
+        <h1>blog ~ ${blogName}</h1>
+        <h1>blog details last</h1>`; // Or adjust as needed
+     const thumbnailUrl = `${ASSET_BASE_PATH}/${diaryName}/${blogName}/thumbnail.jpg`;
+     console.log("Setting blog top card background:", thumbnailUrl);
+     topCardDiv.style.backgroundImage = `url('${thumbnailUrl}')`;
+
+
+    // Set blog content
+    blogContainer.innerHTML = blogData.Blog.content;
+
+    // --- Process elements within the loaded content ---
+
+    // Set background images for elements with class "picture"
+    const pictures = blogContainer.querySelectorAll(".picture");
+    pictures.forEach(picture => {
+        const elementID = picture.id;
+        if (!elementID) {
+            console.warn("Found a '.picture' element without an ID inside the blog content.");
+            return;
+        }
+        // Using absolute path
+        const imageUrl = `${ASSET_BASE_PATH}/${diaryName}/${blogName}/${elementID}.png`;
+        console.log(`Setting background for #${elementID}: ${imageUrl}`);
+        picture.style.backgroundImage = `url('${imageUrl}')`;
+        // Add error handling for background image loading itself
+        picture.style.backgroundSize = 'cover'; // Example: ensure image covers the area
+        picture.style.backgroundPosition = 'center'; // Example: center the image
+        // You might want to add an 'onerror' check if directly using <img> tags,
+        // but for background-image, the browser handles failures silently (shows nothing).
+        // Checking the network tab is the best way to debug background-image fails.
+    });
+
+    // Add functionality for elements with class "link"
+    const links = blogContainer.querySelectorAll(".link");
+    links.forEach(link => {
+        let content = link.textContent.trim();
+        if (!content) return; // Skip empty links
+
+        let urlString = content;
+        if (!urlString.startsWith("http://") && !urlString.startsWith("https://")) {
+            urlString = `https://${urlString}`;
+        }
+
+        try {
+            const url = new URL(urlString);
+            const domainPart = url.hostname.replace(/^www\./, ''); // Keep TLD for clarity e.g., github.com
+            // Remove TLD -> .replace(/\.\w+$/, '');
+            link.textContent = domainPart; // Display domain like 'github.com' or 'kr7zy.itch.io'
+            link.style.cursor = 'pointer'; // Make it look clickable
+            link.style.textDecoration = 'underline'; // Make it look clickable
+
+            link.addEventListener("click", (event) => {
+                event.preventDefault(); // Prevent default if it was somehow an <a> tag already
+                window.open(urlString, "_blank", "noopener noreferrer"); // Open link safely
+            });
+        } catch (error) {
+            console.error(`Invalid URL detected in .link element: ${content}`, error);
+            link.textContent = `${content} (Invalid Link)`; // Indicate the link is broken
+            link.style.color = 'red';
+        }
+    });
+}
+
+
+// --- Main Execution Logic ---
+
+document.addEventListener("DOMContentLoaded", () => {
+    const title = document.title;
+    const parts = title.split('-'); // Assuming format "DiaryName-BlogName" or just "DiaryName"
+
+    const diaryName = parts[0]?.trim(); // Get first part, trim whitespace
+    const blogName = parts[1]?.trim();  // Get second part if it exists, trim whitespace
+
+    if (!diaryName) {
+        console.error("Could not determine Diary Name from document title:", title);
+        // Maybe display a generic error on the page
+        const infoDiv = document.querySelector(".info");
+        if (infoDiv) infoDiv.innerHTML = "<h1>Error: Could not determine page context</h1>";
+        return;
+    }
+
+    console.log("Parsed Diary Name:", diaryName);
+    console.log("Parsed Blog Name:", blogName); // Will be undefined if not present
+
+    const diaryData = blogs[diaryName];
+
+    if (!diaryData) {
+         console.error(`Diary data not found for: ${diaryName}`);
+         // Display error
+         setBreadcrumbs(diaryName); // Show breadcrumbs up to diary level
+         const blogsContainer = document.querySelector(".blogs") || document.querySelector(".blog");
+         if (blogsContainer) blogsContainer.innerHTML = `<h1 class='error'>Diary '${diaryName}' not found.</h1>`;
+         return;
+    }
+
+    if (blogName) {
+        // We are on a specific blog page
+        const blogData = diaryData[blogName];
+        if (!blogData) {
+             console.error(`Blog data not found for: ${blogName} in diary ${diaryName}`);
+             // Display error
+             setBreadcrumbs(diaryName, blogName);
+             const blogContainer = document.querySelector(".blog");
+             if (blogContainer) blogContainer.innerHTML = `<h1 class='error'>Blog '${blogName}' not found in diary '${diaryName}'.</h1>`;
+             return;
+        }
+        renderBlogPost(diaryName, blogName, blogData);
+    } else {
+        // We are on the diary index page
+        renderDiaryIndex(diaryName, diaryData);
     }
 });
