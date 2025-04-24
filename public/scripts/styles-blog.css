@@ -1,339 +1,129 @@
-/* definitions */
 :root {
-    --primary-bg-a: #E4E0E1;
-    --primary-bg-B: #c7bdb9;
-    --primary-text-a: #464545;
-    --primary-text-b: #2c2c2c;
+    --primary-bg-a: #E4E0E1; --primary-bg-B: #c7bdb9; --primary-text-a: #464545; --primary-text-b: #2c2c2c;
     --secondary-text-a: #f8f7f7;
-    --secondary-bg-a: #464545;
+    --secondary-bg-a: #464545; --primary-font-a: "delilah-bold"; --primary-font-b: "quicksand-bold";
     --tertiary-bg-a: #f8f7f7;
 
-    --primary-font-a: "delilah-bold", sans-serif; /* Added sans-serif fallback */
-    --primary-font-b: "quicksand-bold", sans-serif; /* Added sans-serif fallback */
-
-    /* offsets */
-    --header-size: 3.5rem;
-    --header-offset: 1rem; /* Ensure this is used or remove if not */
+    --header-size: 3.5rem; --header-offset: 1rem;
 }
 
-/* fonts */
 @font-face {
     font-family: "delilah-bold";
-    /* --- POTENTIAL FIX ---
-       Using absolute path from site root. Assumes 'assets' is in your deployment root (e.g., 'public').
-       If your CSS file is e.g. in /css/style.css, then '../assets/' would be correct IF assets is also at the root.
-       However, '/assets/' is often more reliable across different server setups.
-       VERIFY this path matches your deployed structure on Firebase. */
-    src: url(/assets/fonts/lt_delilah/LTDelilah-Bold.ttf) format('truetype'); /* Use absolute path & add format */
-    font-display: swap; /* Improves perceived load performance */
+    src: url(/assets/fonts/lt_delilah/LTDelilah-Bold.ttf) format('truetype');
+    font-display: swap;
 }
 @font-face {
     font-family: "quicksand-bold";
-    /* --- POTENTIAL FIX --- Using absolute path from site root. Verify this path. */
-    src: url(/assets/fonts/quicksand/Quicksand_Bold.otf) format('opentype'); /* Use absolute path & add format */
-    font-display: swap; /* Improves perceived load performance */
+    src: url(/assets/fonts/quicksand/Quicksand_Bold.otf) format('opentype');
+    font-display: swap;
 }
 
-/* info */
-.info {
-    width: 100vw;
-    height: 0; /* Note: Using height 0 might be tricky; consider if this is intended or if min-height is better */
-}
-.info h1 {
-    font-size: 1rem;
-    width: 100%;
-    text-align: center;
-    font-family: var(--primary-font-b);
-    transform: translateY(-60%); /* Changed translate(0, -60%) to translateY */
-    background-color: var(--primary-bg-B);
-    color: var(--primary-text-a);
-    padding: 0.25rem 0; /* Added some padding for visibility */
-    margin: 0; /* Reset margin */
+.info {width: 100vw; height: 0;} .info h1 {
+    font-size: 1rem; width: 100%; text-align: center; font-family: var(--primary-font-b);
+    transform: translate(0,-60%); background-color: var(--primary-bg-B); color: var(--primary-text-a);
 }
 
-/* containers */
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%; /* Avoid 100vw on body if possible, can cause overflow issues */
-    box-sizing: border-box; /* Good practice */
-    background-color: var(--primary-bg-a);
-    overflow-x: hidden; /* Apply overflow hiding carefully */
+html,body {
+    margin: 0; padding: 0; width: 100vw; background-color: var(--primary-bg-a)
 }
-*, *::before, *::after {
-    box-sizing: inherit; /* Ensure all elements use border-box */
-}
-
 .topbar {
-    z-index: 10;
-    /* overflow-x: hidden; /* Removed from here, potentially redundant with body */
-    top: var(--header-offset); /* Make sure this offset works as intended */
-    display: flex;
-    position: fixed;
-    /* flex-direction: row; /* Default for flex */
-    justify-content: space-between;
-    align-items: center;
-    width: 100%; /* Use 100% instead of 100vw for fixed elements sometimes helps */
-    font-size: 0.8rem;
-    /* text-wrap-mode: nowrap; /* Non-standard property */
-    white-space: nowrap; /* Standard way to prevent wrapping */
-    /* background-color: green; /* Commented out debug color */
-    height: var(--header-size); /* Use var directly */
-    font-family: var(--primary-font-a);
-    background-color: var(--primary-bg-B);
-    color: var(--primary-text-a);
-    /* max-height: var(--header-size); /* Redundant if height is set */
+    z-index: 10; overflow-x: hidden; top: var(--header-offset);
+    display: flex; position: fixed; flex-direction: row; justify-content: space-between; align-items: center; width: 100vw;
+    font-size: 0.8rem; text-wrap-mode: nowrap; background-color: green; height: 4rem; font-family: var(--primary-font-a);
+    background-color: var(--primary-bg-B); color: var(--primary-text-a); max-height: var(--header-size);
 }
 .topbar-left, .topbar-middle, .topbar-right {
-    display: flex;
-    /* flex-direction: row; /* Default */
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+    display: flex; flex-direction: row; justify-content: center; align-items: center; height: 100%;
     transition: width 0.1s ease-in-out, opacity 0.1s ease-in-out;
 }
 .hamburger {
-    display: flex; /* Will be hidden by width: 0 / opacity: 0 via media query */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;
     transition: width 0.1s ease-in-out, opacity 0.1s ease-in-out;
 }
 .topbar-middle h1 {
     margin-inline: 2rem;
-    background-image: linear-gradient(var(--primary-text-a), var(--primary-text-a));
-    background-size: 0% 2px;
-    background-repeat: no-repeat;
-    background-position: bottom; /* Simpler than background-position-y */
-    transition: background-size 0.1s ease-in-out, transform 0.1s ease-in-out;
-    padding-bottom: 2px; /* Add space for the underline */
+    background-image: linear-gradient(var(--primary-text-a), var(--primary-text-a)); background-size: 0% 2px; background-repeat: no-repeat;
+    background-position-y: bottom; transition: background-size 0.1s ease-in-out, transform 0.1s ease-in-out;
 }
 .hamburger .dropdown {
-    /* Consider positioning relative to the hamburger icon */
-    height: 0;
-    opacity: 0;
-    background-color: var(--primary-bg-B);
-    width: 10vw; /* Maybe use rem or em? */
-    text-align: center;
-    position: fixed; /* Reconsider fixed positioning here, maybe absolute? */
-    /* Add transition for smooth appearance */
-    transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out; /* Example */
-    overflow: hidden; /* Hide content when height is 0 */
+    height: 0; opacity: 0; background-color: var(--primary-bg-B); width: 10vw; text-align: center; position: fixed;
 }
-/* Need CSS to actually show the dropdown on hamburger hover/click */
-.hamburger:hover .dropdown { /* Example: Show on hover */
-   /* height: auto; /* Or a fixed height */
-   /* opacity: 1; */
-   /* Adjust top/left positioning */
-}
-
 .topbar-right svg {
-    transition: transform 0.1s ease-in-out, rotate 10s ease-in-out; /* Rotate is modern, check browser support */
+    transition: transform 0.1s ease-in-out, rotate 10s ease-in-out;
 }
 .topbar-left img {
-    height: calc(var(--header-size) * 0.75); /* Relative to header size */
-    max-height: 3rem; /* Keep a max */
-    aspect-ratio: 1 / 1; /* Ensure it's square if needed */
-    border-radius: 50%; /* Use 50% for perfect circle */
-    margin-inline: 1rem;
-    display: block; /* Fix potential small gaps below image */
+    height: 3rem; border-radius: 100vw; margin-inline: 1rem;
 }
 
-/* topbar effects */
-.topbar-left:hover {
-    cursor: default;
-}
-.topbar-middle h1:hover, .hamburger .dropdown h1:hover {
-    transform: scale(1.05); /* Use unitless scale */
-    cursor: pointer;
-    background-size: 100% 2px;
-}
-.topbar-right svg:hover {
-    transform: scale(1.05); /* Use unitless scale */
-    cursor: pointer;
-    rotate: 3600deg; /* Keep the fun spin */
-}
-
-/* Responsive topbar */
+.topbar-left:hover {cursor: default;}
+.topbar-middle h1:hover, .hamburger .dropdown h1:hover {transform: scale(105%); cursor: pointer; background-size: 100% 2px;}
+.topbar-right svg:hover {transform: scale(105%); cursor: pointer; rotate: 3600deg;}
 @media (max-width: 1000px) {
-    .topbar-middle {
-        opacity: 0;
-        width: 0; /* Use width 0 instead of position: fixed to remove from flow */
-        pointer-events: none;
-        padding: 0; /* Remove padding */
-        margin: 0; /* Remove margin */
-        overflow: hidden; /* Hide content */
-    }
-    .topbar-left, .topbar-right {
-        width: 45%; /* Adjust as needed */
-    }
-    .hamburger {
-        width: 10%; /* Adjust as needed */
-        opacity: 1;
-        pointer-events: auto; /* Make sure it's clickable */
-    }
-}
-@media (min-width: 1001px) { /* Use 1001px to avoid overlap */
-    .topbar-middle {
-        width: 60%;
-        opacity: 1;
-        pointer-events: auto;
-    }
-    .topbar-left, .topbar-right {
-        width: 20%;
-    }
-    .hamburger {
-        width: 0;
-        opacity: 0;
-        pointer-events: none;
-        padding: 0;
-        margin: 0;
-        overflow: hidden;
-    }
+    .topbar-middle {opacity: 0%; position: fixed; width: 0; pointer-events: none;}
+    .topbar-left, .topbar-right {width: 45vw;}
+    .hamburger {width: 10vw; opacity: 100%;}
+} @media (min-width: 1000px) {
+    .topbar-middle {width: 60vw; opacity: 100%;}
+    .topbar-left, .topbar-right {width: 20vw;}
+    .hamburger {width: 0; opacity: 0%; pointer-events: none;}
 }
 
-/* content */
 .content {
-    /* Consider padding-top instead of transform for static offset */
-    padding-top: calc(var(--header-size) + var(--header-offset));
-    /* transform: translateY(calc(var(--header-size) + var(--header-offset))); */ /* Removed for padding */
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; /* Removed - likely want content aligned top */
-    align-items: center; /* Center content horizontally */
-    font-family: var(--primary-font-b);
-    width: 100%; /* Changed from 100vw */
-    /* overflow-x: hidden; /* Already on body */
-    /* overflow-y: hidden; /* Why hide vertical overflow? Remove if scroll needed */
-    min-height: calc(100vh - (var(--header-size) + var(--header-offset))); /* Ensure it fills viewport height */
-}
-.content h1 {
-    font-size: 1.5rem;
-}
-
+    transform: translate(0, calc(var(--header-size) - 4px));
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    transition: transform 0.1s ease-in-out; font-family: var(--primary-font-b); width: 100vw; overflow-x: hidden; overflow-y: hidden;
+} .content h1 { font-size: 1.5rem; }
 .top-card {
-    display: flex;
-    flex-direction: row; /* Items side-by-side */
-    align-items: center; /* Vertically center items in the card */
-    justify-content: center; /* Horizontally center items */
-    flex-wrap: wrap; /* Allow items to wrap */
-    width: 100%; /* Take full width of parent */
-    height: 50vh;
-    background-size: cover;
-    background-position: center; /* Combined x and y */
-    /* background-image: url(""); /* JS should set this */
-    /* background-color: rgb(0,0,0,0.5); /* Incorrect syntax */
-    background-color: rgba(0, 0, 0, 0.5); /* Correct syntax for fallback */
-    color: var(--secondary-text-a);
-    /* opacity: 0.8; /* Opacity affects children; better to use rgba background */
+    display: flex; flex-direction: row; align-items: flex-start; justify-content: center; width: 100vw; height: 50vh;
+    background-size: cover; color: var(--secondary-text-a); opacity: 0.8; background-position-x: center; flex-wrap: wrap;
+    background-position-y: center; background-image: url(""); background-color: rgb(0,0,0,0.5);
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
-    /* Consider -webkit-mask-image for wider compatibility if needed */
-}
-.top-card h1 {
-    background-color: rgba(0, 0, 0, 0.9); /* Correct syntax */
-    border-radius: 10px;
-    padding: 0.5rem 1rem; /* Adjusted padding */
-    text-align: center;
-    margin: 0.5rem; /* Use margin instead of margin-inline for wrapping */
-    /* opacity: 0.7; /* Avoid opacity if possible, use rgba */
-    transition: transform 0.25s ease-in-out, background-color 0.25s ease-in-out; /* Transition background instead of opacity */
+} .top-card h1 {
+    background-color: rgb(0,0,0,0.9); border-radius: 10px; padding: 1rem 0; text-align: center; margin-inline: 1rem; opacity: 0.7;
+    transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
 }
 
-/* content effects */
-.top-card h1:hover {
-    cursor: default;
-    transform: scale(1.05); /* Unitless scale */
-    /* opacity: 1; */
-    background-color: rgba(0, 0, 0, 1); /* Change background on hover */
+.top-card h1:hover {cursor: default; transform: scale(105%); opacity: 1;}
 
+.blog {
+    display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
+    width: 100vw;
 }
-
-/* blog */
-.blog { /* This is the container for dynamically loaded blog content */
-    display: flex;
-    flex-direction: column;
-    /* justify-content: flex-start; /* Default */
-    align-items: center; /* Center blog elements horizontally */
-    width: 100%;
-    padding: 1rem 0; /* Add some vertical padding */
-}
-
-/* Styles for elements *inside* the dynamically loaded .blog container */
 .blog .picture {
-    width: 70%; /* Adjusted width */
-    max-width: 800px; /* Added max-width */
-    /* object-fit: cover; /* Doesn't apply to background-image on a div */
+    width: 50vw;
+    /* object-fit: cover; */ /* Removed: Not applicable for background-image */
     border-radius: 20px;
-    aspect-ratio: 16 / 9; /* Keep aspect ratio */
-    background-color: var(--primary-bg-B); /* Fallback color */
+    aspect-ratio: 16/9;
+    background-color: var(--primary-bg-B);
     background-size: cover;
-    background-position: center; /* Combined x/y */
-    margin-bottom: 1.5rem; /* Space below picture */
-    /* margin-left: 25vw; /* Removed for centering via align-items: center on parent */
-    opacity: 0.8; /* Keep initial opacity if desired */
+    background-position: center; /* Combined position-x and position-y */
+    /* background-position-x: center; */ /* Combined above */
+    /* background-position-y: center; */ /* Combined above */
+    margin-left: 25vw;
+    opacity: 0.7;
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
-    /* background-image will be set by JavaScript */
 }
-.blog .picture:hover {
-    opacity: 1;
-    cursor: pointer;
-    transform: scale(1.02); /* Slightly reduced hover scale */
+.blog .picture:hover {opacity: 1; cursor: pointer; transform: scale(105%);}
+.blog .centre-text {
+    width: 100%; text-align: center;
 }
-
-.blog .centre-text { /* Applied to h1 etc inside .blog */
-    width: 90%; /* Limit width */
-    max-width: 900px; /* Set max width */
-    text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.blog .description { /* Applied to h1 etc inside .blog */
-    font-size: 1.1rem; /* Adjusted size */
-    padding: 0.75rem 1.5rem; /* Adjusted padding */
-    width: 90%; /* Limit width */
-    max-width: 900px; /* Set max width */
-    background-color: var(--primary-bg-B); /* Changed color slightly */
-    border-radius: 10px; /* Adjusted radius */
-    opacity: 0.9; /* Adjusted opacity */
-    margin-bottom: 1rem; /* Space below */
+.blog .description {
+    font-size: 1.25rem; padding-left: 2.5%; width: 90%;
+    background-color: #c7bdb9; border-radius: 20px; opacity: 0.8;
     transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
-    line-height: 1.6; /* Improve readability */
+} .blog .description:hover {
+    transform: translate(1rem, 0); opacity: 1;
 }
-.blog .description:hover {
-    transform: translateX(0.5rem); /* Reduced transform */
-    opacity: 1;
-}
-
-.blog .link { /* Applied to h1 etc inside .blog */
-    font-size: 1.1rem; /* Adjusted size */
-    padding: 0.75rem 1.5rem; /* Adjusted padding */
-    width: 90%; /* Limit width */
-    max-width: 900px; /* Set max width */
-    background-color: #b9c3c7;
-    border-radius: 10px; /* Adjusted radius */
-    opacity: 0.9; /* Adjusted opacity */
-    margin-bottom: 1rem; /* Space below */
+.blog .link {
+    font-size: 1.25rem; padding-left: 2.5%; width: 90%;
+    background-color: #b9c3c7; border-radius: 20px; opacity: 0.8;
     transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
-    cursor: pointer;
-    word-break: break-all; /* Ensure long URLs don't break layout before JS runs */
+    cursor: pointer;;
+} .blog .link:hover {
+    transform: translate(1rem, 0); opacity: 1;
 }
-.blog .link:hover {
-    transform: translateX(0.5rem); /* Reduced transform */
-    opacity: 1;
-}
-
-/* Note: .underline class wasn't used on any elements shown in JS/HTML, but keeping style */
 .blog .underline {
-    background-image: linear-gradient(var(--primary-text-a), var(--primary-text-a));
-    background-size: 0% 3px;
-    background-repeat: no-repeat;
-    background-position: bottom; /* Use bottom instead of background-position-y */
-    transition: background-size 0.1s ease-in-out; /* Removed extra '1s' */
-    padding-bottom: 3px; /* Add space for underline */
+    background-image: linear-gradient(var(--primary-text-a), var(--primary-text-a)); background-size: 0% 3px; background-repeat: no-repeat;
+    background-position-y: bottom; transition: background-size 0.1s ease-in-out, 1s ease-in-out;
 }
-.blog .underline:hover {
-    background-size: 100% 3px;
-    cursor: pointer;
-}
+.blog .underline:hover {background-size: 100% 3px; cursor: pointer;}
