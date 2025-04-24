@@ -96,43 +96,65 @@ const blogs = {
                         Character Controller Method
                     </h1>
                     <h1 class="description">
-                        After trying MANY MANY MANY character controller methods, I stumbled upon the one I like the most.
+                        After trying many character controller methods, I created the one I like the most.
                     </h1>
                     <h1 class="description">
-                        I used the CharacterController component, which is a component that Unity provides to control the movement of a character. This component is very useful, and it makes it very easy to control the movement of a character.
+                        I used the CharacterController component, a built in Unity component. I configured the built in properties like slopes, step offset, and skin width to correlate with the scaling of my character model and the mansion.
                     </h1>
                     <h1 class="description">
-                        I then added a script to the character, which is a C# script that controls the movement of the character.
+                        I attached the "Player" script, which will handle the movement of the character.
                     </h1>
                     <h1 class="picture" id="Picture1"></h1>
                     <h1 class="description">
-                        I made references to camera and a sphere instance. The sphere instance is just a little helper instance I used to place a few hundred units in the direction of the camera's look vector that the spine bone of my character faces. (This is not really a part of the character controller, but I thought it was worth mentioning.)
+                        I implemented head turning to the character by moving a sphere in the direction of the camera and making a bone in my character face it using Unity's animation rigging package.
                     </h1>
                     <h1 class="description">
-                        All the configurable variables are move speed and jump height, with turn speed and gravity. These can be tweaked depending on how scaled the character or world is.
+                        I then 
                     </h1>
                     <h1 class="picture" id="Picture2"></h1>
                     <h1 class="description">
                         Here is the main code snippet. My favourite part of this functionality is the way the speed lerps from normal to sprint and applies inputs in such a simple way.
+                    </h1>
+                    <h1 class="centre-text">
+                        Problems
+                    </h1>
+                    <h1 class="description">
+                        I had a lot of problems implementing the script. One included the is grounded detection, I overcame this by using raycasting to detect a masking layer like the terrain.
+                    </h1>
+                    <h1 class="description">
+                        I also had a problem pairing up my movement with animation, I just had to fine tweak the numbers till it looked smooth.
+                    </h1>
+                    <h1 class="description">
+                        Footsteps are hard to get right, after some trial and error, I got it to somewhat sound fine.
                     </h1>
                     
                     <h1 class="centre-text">
                         Camera Controller Method
                     </h1>
                     <h1 class="description">
-                        Previously I coded my own orbital camera controller however, "cinemachine" is a package that Unity provides to control the camera. This package is very useful, and it makes it very easy to control the camera.
+                        I imporated the cinemachine package from the unity registry, and tweaked in such to match my character scaling and proportions.
                     </h1>
                     <h1 class="picture" id="Picture3"></h1>
                     <h1 class="description">
-                        The main thing I had to do was position and scale the boundaries of the free look camera.
+                        I then tweaked little cinemachine properties like the field of view to make the camera feel better.
                     </h1>
+                    <h1 class="centre-text">
+                        Problems
+                    </h1>
+                    <h1 class="description">
+                        Previously I attempted to make an orbital camera using sin/cos/tan and clamping with offsets, though due to Unity's physics engine the turning always causing stutterting, no matter how much you smooth it out or update the camera position.
+                    </h1>
+                    <h1 class="description">
+                        The camera required the cursor to be locked and hidden so I added a seperate "Settings" script to handle that.
+                    </h1>
+
                 `
             }
         },
         "Initiate": {
             "Card": {
                 "title": "Initiate",
-                "description": "Integrating Github with Unity and setting up the Itch.io paged."
+                "description": "Initiating the github repository, the Itch.io page, and the Unity project."
             },
             "Blog": {
                 "content": `
@@ -289,8 +311,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const pictures = blogDiv.querySelectorAll(".picture");
             pictures.forEach(picture => {
                 const elementID = picture.id;
-                console.log(elementID);
-                picture.style.backgroundImage = `url('assets/images/${diaryName}/${blogName}/${elementID}.png')`;
+                const imageUrl = `assets/images/${diaryName}/${blogName}/${elementID}.png`;
+            
+                // Debugging: Log the generated URL
+                console.log(`Setting backgroundImage for ${elementID}: ${imageUrl}`);
+            
+                // Check if the image exists before applying it
+                const img = new Image();
+                img.src = imageUrl;
+                img.onload = () => {
+                    picture.style.backgroundImage = `url('${imageUrl}')`;
+                };
+                img.onerror = () => {
+                    console.error(`Image not found: ${imageUrl}`);
+                    // Optionally set a fallback image
+                    picture.style.backgroundImage = `url('assets/images/default.png')`;
+                };
             });
 
             // Add functionality for elements with class "link"
