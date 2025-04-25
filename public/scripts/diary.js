@@ -26,9 +26,6 @@ const blogs = {
             "Blog": {
                 "content": `
                     <div class="video" id="6SQbJWIDOLk"></div>
-                    <h1 class="centre-text">
-                        Summary:
-                    </h1>
 
                     <h1 class="centre-text">
                         Details:
@@ -50,6 +47,54 @@ const blogs = {
                     </h1>
                     <h1 class="description">
                         Project Professor: Gavin Wade
+                    </h1>
+
+                    <h1 class="centre-text">
+                        Summary:
+                    </h1>
+                    <h1 class="description">
+                        Creating Furniture in Blender
+                    </h1>
+                    <h1 class="description">
+                        Creating a Transition Fader
+                    </h1>
+
+                    <h1 class="centre-text">
+                        Creating Furniture in Blender
+                    </h1>
+                    <h1 class="description">
+                        I used my team's assets as a reference and remade the unoptimized ones without materials.
+                    </h1>
+                    <h1 class="description">
+                        I then added them to the mansion and added some stair slopes to the staircases.
+                    </h1>
+                    <h1 class="centre-text">
+                        Problems
+                    </h1>
+                    <h1 class="description">
+                        The mansion exceeeded 100mb so I had to remove it from the github and from the build.
+                        I am forced to found a workaround to get a setting in the game.
+                    </h1>
+                    <h1 class="centre-text">
+                        Creating a Transition Fader
+                    </h1>
+                    <h1 class="description">
+                        I used a YouTube video to first learn how animating random objects works.
+                    </h1>
+                    <h1 class="description">
+                        I then made an animator and animation clip for the transition fader and added it to all scenes.
+                    </h1>
+                    <h1 class="centre-text">
+                        Problems
+                    </h1>
+                     <h1 class="description">
+                        I didn't want to use animation events and used a coroutine instead, however this can
+                        cause the game to stutter after changing each scene.
+                    </h1>
+                    <h1 class="description">
+                        Another minor more annoying problem was that the transition fader
+                        kept hiding the entire editor and has to be disabled then enabled before build.
+                        I'm not sure how to get around this besides enabling upon play somehow.
                     </h1>
                 `
             }
