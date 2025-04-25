@@ -83,12 +83,11 @@ const blogs = {
                         incase I didn't have time to make a better one.
                     </h1>
                     <div class="video" id="AaBs_Y7xd5s"></div>
-
+                    <div class="video" id="z-Vlhr-ISR4"></div>
                     <h1 class="description">
                         Disclaimer - I doubt this'll go towards grading since it's not to do with the game itself.
                         However you can find the final product video and images in this page.
                     </h1>
-                    <div class="video" id="z-Vlhr-ISR4"></div>
                     <h1 class="centre-text">
                         Links:
                     </h1>
@@ -142,9 +141,22 @@ const blogs = {
                     <h1 class="description">
                         I then added it to the build profile in the unity project and Itch.io page.
                     </h1>
+                    <h1 class="centre-text">
+                        Problems
+                    </h1>
+                    <h1 class="description">
+                        Finding out how to make a logo prorpotional and recognizable was hard.
+                        Mine doesn't really fit the criteria but as baremin as it is, it's something.
+                    </h1>
 
                     <h1 class="centre-text">
                         Creating the final product video and images.
+                    </h1>
+                    <h1 class="description">
+                        I used nvidia recorder and a software to record the screen for clips.
+                    </h1>
+                    <h1 class="description">
+                        I then simply transitioned between each clips in Capcut and added music.
                     </h1>
 
                     <h1 class="centre-text">
