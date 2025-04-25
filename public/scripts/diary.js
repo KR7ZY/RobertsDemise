@@ -104,6 +104,7 @@ const blogs = {
                         smooth, while making sure nothing went too high poly. I made sure all the normals are facing the right way,
                         I also made sure the scaling was right and transformations were applied. (Blender jargin)
                     </h1>
+                    <h1 class="picture" id="picture1"></h1>
                     <h1 class="description">
                         I felt like making a sofa variant since one sofa looked weird. I gave both different morphs and pillow
                         fine tuning.
