@@ -26,6 +26,12 @@ const blogs = {
             "Blog": {
                 "content": `
                     <h1 class="description">
+                        I made this is an example for the final product video, though I used it as a placeholder,
+                        incase I didn't have time to make a better one.
+                    </h1>
+                    <div class="video" id="6SQbJWIDOLk"></div>
+
+                    <h1 class="description">
                         Disclaimer - I doubt this'll go towards grading since it's not to do with the game itself.
                         However you can find the final product video and images in this page.
                     </h1>
@@ -192,6 +198,8 @@ const blogs = {
                         Another minor more annoying problem was that the transition fader
                         kept hiding the entire editor and has to be disabled then enabled before build.
                         I'm not sure how to get around this besides enabling upon play somehow.
+                        Upon further research, I realized u can check off the image component as
+                        the animation will set it correctly once played anyways.
                     </h1>
                 `
             }
