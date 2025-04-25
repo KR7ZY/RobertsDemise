@@ -294,22 +294,40 @@ function embedYouTubeVideos(container) {
             return;
         }
 
-        // Construct the YouTube embed URL
+        // --- CORRECTED LINE ---
+        // Construct the standard YouTube embed URL
         const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+        // --- END CORRECTION ---
+
         console.log(`Embedding YouTube video for ID: ${videoId}, URL: ${embedUrl}`);
 
         // Create an iframe element for the YouTube video
         const iframe = document.createElement("iframe");
         iframe.src = embedUrl;
-        iframe.width = "100%";
-        iframe.height = "100%";
-        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.width = "100%"; // Consider setting explicit width/height or aspect ratio via CSS on the parent (.video)
+        iframe.height = "100%"; // Setting 100% height might require the parent (.video) to have a defined height
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"; // Added web-share
         iframe.allowFullscreen = true;
-        iframe.style.border = "none";
+        iframe.style.border = "none"; // Good practice to remove default iframe border
+        iframe.title = `YouTube video player: ${videoId}`; // Added for accessibility
 
-        // Clear any existing content in the video element and append the iframe
-        video.innerHTML = "";
+        // Clear any existing content (like the placeholder h1) in the video element and append the iframe
+        video.innerHTML = ""; // Clear the placeholder H1
         video.appendChild(iframe);
+
+        // Optional: Style the container (.video element) for aspect ratio
+        // This prevents the iframe from collapsing if height isn't explicitly set elsewhere
+        video.style.position = 'relative';
+        video.style.paddingBottom = '56.25%'; // 16:9 aspect ratio (height / width)
+        video.style.height = '0';
+        video.style.overflow = 'hidden';
+        iframe.style.position = 'absolute';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+
+
     });
 }
 
