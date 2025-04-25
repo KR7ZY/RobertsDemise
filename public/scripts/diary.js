@@ -29,7 +29,7 @@ const blogs = {
                         I made this is an example for the final product video, though I used it as a placeholder,
                         incase I didn't have time to make a better one.
                     </h1>
-                    <div class="video" id="6SQbJWIDOLk"></div>
+                    <div class="video" id="AaBs_Y7xd5s"></div>
 
                     <h1 class="description">
                         Disclaimer - I doubt this'll go towards grading since it's not to do with the game itself.
