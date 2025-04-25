@@ -164,6 +164,10 @@ const blogs = {
                     <h1 class="description">
                         I then simply transitioned between each clips in Capcut and added music.
                     </h1>
+                    <h1 class="picture" id="picture3"></h1>
+                    <h1 class="picture" id="picture4"></h1>
+                    <h1 class="picture" id="picture5"></h1>
+                    <h1 class="picture" id="picture6"></h1>
 
                     <h1 class="centre-text">
                         Improving the Itch.io description.
