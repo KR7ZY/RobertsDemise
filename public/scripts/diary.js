@@ -119,6 +119,13 @@ const blogs = {
                         The mansion exceeeded 100mb so I had to remove it from the github and from the build.
                         I am forced to found a workaround to get a setting in the game.
                     </h1>
+                    <h1 class="description">
+                        Probably the biggest problem in the entire project, the most game breaking problem is the
+                        fact I couldn't convert any team made assets. Once somebody made something, for example furniture,
+                        character models, or the mansion. They were either not committed to the game, sent in weird formats,
+                        incredibly unoptimized, or sent as prefabs (fbx exporter package posed problems too). I personally
+                        love Unity however it could be a pain for a team project especially in year 1.
+                    </h1>
                     <h1 class="centre-text">
                         Creating a Transition Fader
                     </h1>
