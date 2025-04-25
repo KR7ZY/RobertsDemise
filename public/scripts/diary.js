@@ -242,6 +242,7 @@ const blogs = {
                         Creating the Unity project
                     </h1>
                     <h1 class="picture" id="picture3"></h1>
+                    <h1 class="video" id="IqXVT3JECQw"></h1>
                     <h1 class="description">
                         I created the Unity project, so that we can start working on the game. This is also a simple process, and it only took a few minutes to do.
                     </h1>
@@ -276,6 +277,73 @@ function setBreadcrumbs(diaryName, blogName = null) {
     } else {
         infoDiv.innerHTML = `<h1>home > diaries > ${diaryName}</h1>`;
     }
+}
+
+/**
+ * Dynamically embeds YouTube videos into elements with the `video` class.
+ * The `id` of each `.video` element should be the YouTube video ID.
+ * @param {HTMLElement} container - The container element where `.video` elements are located.
+ */
+function embedYouTubeVideos(container) {
+    const videos = container.querySelectorAll(".video");
+
+    videos.forEach(video => {
+        const videoId = video.id;
+        if (!videoId) {
+            console.warn("Found a '.video' element without an ID. Skipping.");
+            return;
+        }
+
+        // Construct the YouTube embed URL
+        const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+        console.log(`Embedding YouTube video for ID: ${videoId}, URL: ${embedUrl}`);
+
+        // Create an iframe element for the YouTube video
+        const iframe = document.createElement("iframe");
+        iframe.src = embedUrl;
+        iframe.width = "100%";
+        iframe.height = "100%";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
+        iframe.style.border = "none";
+
+        // Clear any existing content in the video element and append the iframe
+        video.innerHTML = "";
+        video.appendChild(iframe);
+    });
+}
+
+// Example usage in the renderBlogPost function
+function renderBlogPost(diaryName, blogName, blogData) {
+    const topCardDiv = document.querySelector(".top-card");
+    const blogContainer = document.querySelector(".blog");
+
+    if (!topCardDiv || !blogContainer) {
+        console.error("Required elements '.top-card' or '.blog' not found!");
+        return;
+    }
+
+    if (!blogData.Blog || !blogData.Blog.content) {
+        console.error(`Blog '${blogName}' in diary '${diaryName}' is missing 'Blog' data or 'content'.`);
+        blogContainer.innerHTML = `<h1 class='error'>Blog content not found.</h1>`;
+        return;
+    }
+
+    setBreadcrumbs(diaryName, blogName);
+
+    // Set top card info and background
+    topCardDiv.innerHTML = `
+        <h1>diary ~ ${diaryName}</h1>
+        <h1>blog ~ ${blogName}</h1>
+    `;
+    const thumbnailUrl = `${ASSET_BASE_PATH}/${diaryName}/${blogName}/thumbnail.jpg`;
+    topCardDiv.style.backgroundImage = `url('${thumbnailUrl}')`;
+
+    // Set blog content
+    blogContainer.innerHTML = blogData.Blog.content;
+
+    // Process .video elements
+    embedYouTubeVideos(blogContainer);
 }
 
 /**
