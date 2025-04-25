@@ -25,6 +25,7 @@ const blogs = {
             },
             "Blog": {
                 "content": `
+                    <div class="video" id="6SQbJWIDOLk"></div>
                     <h1 class="centre-text">
                         Summary:
                     </h1>
@@ -242,7 +243,6 @@ const blogs = {
                         Creating the Unity project
                     </h1>
                     <h1 class="picture" id="picture3"></h1>
-                    <div class="video" id="QekOtb16698"></div>
                     <h1 class="description">
                         I created the Unity project, so that we can start working on the game. This is also a simple process, and it only took a few minutes to do.
                     </h1>
