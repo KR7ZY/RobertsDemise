@@ -68,6 +68,12 @@ const blogs = {
                     <h1 class="centre-text">
                         Additional Implementations
                     </h1>
+                    <h1 class="centre-text">
+                        Previous Blog Entry
+                    </h1>
+                    <h1 class="link">
+                        https://robertsdemise.blog/GameDevCS4043-Branding.html
+                    </h1>
                 `
             }
         },
@@ -163,6 +169,19 @@ const blogs = {
                         Improving the Itch.io description.
                     </h1>
                     <h1 class="picture" id="picture2"></h1>
+                    
+                    <h1 class="centre-text">
+                        Previous Blog Entry
+                    </h1>
+                    <h1 class="link">
+                        https://robertsdemise.blog/GameDevCS4043-Blender.html
+                    </h1>
+                    <h1 class="centre-text">
+                        Next Blog Entry
+                    </h1>
+                    <h1 class="link">
+                        https://robertsdemise.blog/GameDevCS4043-Finalize.html
+                    </h1>
                     `
             }
         },
@@ -266,6 +285,18 @@ const blogs = {
                         Upon further research, I realized u can check off the image component as
                         the animation will set it correctly once played anyways.
                     </h1>
+                    <h1 class="centre-text">
+                        Previous Blog Entry
+                    </h1>
+                    <h1 class="link">
+                        https://robertsdemise.blog/GameDevCS4043-Physics.html
+                    </h1>
+                    <h1 class="centre-text">
+                        Next Blog Entry
+                    </h1>
+                    <h1 class="link">
+                        https://robertsdemise.blog/GameDevCS4043-Branding.html
+                    </h1>
                 `
             }
         },
@@ -363,7 +394,18 @@ const blogs = {
                     <h1 class="description">
                         The camera required the cursor to be locked and hidden so I added a seperate "Settings" script to handle that.
                     </h1>
-
+                    <h1 class="centre-text">
+                        Previous Blog Entry
+                    </h1>
+                    <h1 class="link">
+                        https://robertsdemise.blog/GameDevCS4043-Initiate.html
+                    </h1>
+                    <h1 class="centre-text">
+                        Next Blog Entry
+                    </h1>
+                    <h1 class="link">
+                        https://robertsdemise.blog/GameDevCS4043-Blender.html
+                    </h1>
                 `
             }
         },
@@ -486,6 +528,13 @@ const blogs = {
                     </h1>
                     <h1 class="link">
                         https://www.youtube.com/@1BP6/videos
+                    </h1>
+
+                    <h1 class="centre-text">
+                        Next Blog Entry
+                    </h1>
+                    <h1 class="link">
+                        https://robertsdemise.blog/GameDevCS4043-Physics.html
                     </h1>
                     `
             }
