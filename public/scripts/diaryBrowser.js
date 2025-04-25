@@ -1,6 +1,9 @@
 const diaryCards = {
     "GameDevCS4043": {
         "description": "<h1>GameDevCS4043; First year of college, second semester games modelling project.</h1><h1>An 8 member team, where we use Unity to develop a simple survival game called 'Rob's Servant'.</h1>"
+    },
+    "Test": {
+        "description": "<h1>This is just to prove this website's diary and blog system is dynamic and not hardcoded :)</h1>"
     }
 };
 

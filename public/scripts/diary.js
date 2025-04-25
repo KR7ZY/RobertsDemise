@@ -11,7 +11,7 @@ const blogs = {
                         Test Title
                     </h1>
                     <h1 class="description">
-                        This is a test description.
+                        This is a test description. Hello!
                     </h1>
                 `
             }
@@ -271,6 +271,11 @@ const blogs = {
                         the date I started the section, e.g., when I started on doing the phyics and slowly updating
                         my entry. However each entry is up to date to how the final product looks.
                     </h1>
+                    <h1 class="description">
+                        Disclaimer 4 - Upon making the blog, I used anime pictures etc to style it (purely cosmetic),
+                        I don't think its plagiarism? considering it has nothing to do with the assessment part
+                        and are just thumbnails.
+                    </h1>
                     <h1 class="centre-text">
                         Links:
                     </h1>
@@ -279,6 +284,9 @@ const blogs = {
                     </h1>
                     <h1 class="link">
                         https://kr7zy.itch.io/robs-servant
+                    </h1> 
+                    <h1 class="link">
+                        https://www.youtube.com/@RobertsDemise
                     </h1>                    
                     <h1 class="centre-text">
                         Details:
