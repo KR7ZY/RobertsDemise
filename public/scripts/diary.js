@@ -20,8 +20,8 @@ const blogs = {
     "GameDevCS4043": {
         "Branding": {
             "Card": {
-                "title": "Branding",
-                "description": "Creating the branding for the game, including the final product video, images, and Itch.io information."
+                "title": "Finalize",
+                "description": "My process towards the closing of the project, including some addiontal implementations and the building and transferring of the game."
             },
             "Blog": {
                 "content": `
