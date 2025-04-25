@@ -27,6 +27,7 @@ const blogs = {
                 "content": `
                     <h1 class="description">
                         Disclaimer - I doubt this'll go towards grading since it's not to do with the game itself.
+                        However you can find the final product video and images in this page.
                     </h1>
                     <div class="video" id="z-Vlhr-ISR4"></div>
                     <h1 class="centre-text">
