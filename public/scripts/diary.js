@@ -419,7 +419,7 @@ const blogs = {
                     <h1 class="description">
                         If you want to check out the old version of the project to show work done click on this link.
                     </h1>
-                    <h1 class="link">t
+                    <h1 class="link">
                         https://www.youtube.com/@1BP6/videos
                     </h1>
                     `
