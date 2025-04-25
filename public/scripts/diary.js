@@ -18,6 +18,37 @@ const blogs = {
         }
     },
     "GameDevCS4043": {
+        "Branding": {
+            "Card": {
+                "title": "Branding",
+                "description": "Creating the branding for the game, including the final product video, images, and Itch.io information."
+            },
+            "Blog": {
+                "content": `
+                    <h1 class="centre-text">
+                        Details:
+                    </h1>
+                    <h1 class="description">
+                        Blog Title: Branding
+                    </h1>
+                    <h1 class="description">
+                        Blog Date: 20th of March, 2025
+                    </h1>
+                    <h1 class="description">
+                        Blog Author: Robert Kenny
+                    </h1>
+                    <h1 class="description">
+                        Blog Diary: GameDevCS4043
+                    </h1>
+                    <h1 class="description">
+                        Project: CS4043 - Games Modelling Project
+                    </h1>
+                    <h1 class="description">
+                        Project Professor: Gavin Wade
+                    </h1>
+                    `
+            }
+        },
         "Blender": {
             "Card": {
                 "title": "Blender",
@@ -31,10 +62,10 @@ const blogs = {
                         Details:
                     </h1>
                     <h1 class="description">
-                        Blog Title: Initiate
+                        Blog Title: Blender
                     </h1>
                     <h1 class="description">
-                        Blog Date: 20th of March, 2025
+                        Blog Date: 10th of March, 2025
                     </h1>
                     <h1 class="description">
                         Blog Author: Robert Kenny
@@ -214,6 +245,11 @@ const blogs = {
                     <h1 class="description">
                         Disclaimer 2 - I made this website for this blog, I love making websites, and
                         I love making aesthetically pleasing UI so I hope this looks good.
+                    </h1>
+                    <h1 class="description">
+                        Disclaimer 3 - The dates of blog entries are based on the date I started the entry, and
+                        the date I started the section, e.g., when I started on doing the phyics and slowly updating
+                        my entry. However each entry is up to date to how the final product looks.
                     </h1>
                     <h1 class="centre-text">
                         Links:
