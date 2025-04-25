@@ -97,6 +97,18 @@ const blogs = {
                         I used my team's assets as a reference and remade the unoptimized ones without materials.
                     </h1>
                     <h1 class="description">
+                        My method is creating a base mesh that is mathematically proportional and then aftwards
+                        sculpting and morphing to get a natural shape. The materials are basic and made off the blender
+                        nodes purely. I thought the bed reference looked too plain so I added a blanket and gave
+                        it a cloth rigid body to blanket the bed. Each asset got a sub division surface modifier to make it look
+                        smooth, while making sure nothing went too high poly. I made sure all the normals are facing the right way,
+                        I also made sure the scaling was right and transformations were applied. (Blender jargin)
+                    </h1>
+                    <h1 class="description">
+                        I felt like making a sofa variant since one sofa looked weird. I gave both different morphs and pillow
+                        fine tuning.
+                    </h1>
+                    <h1 class="description">
                         I then added them to the mansion and added some stair slopes to the staircases.
                     </h1>
                     <h1 class="centre-text">
