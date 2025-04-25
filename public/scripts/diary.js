@@ -46,6 +46,28 @@ const blogs = {
                     <h1 class="description">
                         Project Professor: Gavin Wade
                     </h1>
+
+                    <h1 class="centre-text">
+                        Summary:
+                    </h1>
+                    <h1 class="description">
+                        Creating the logo for the game.
+                    </h1>
+                    <h1 class="description">
+                        Creating the final product video and images.
+                    </h1>
+                    <h1 class="description">
+                        Improving the Itch.io description.
+                    </h1>
+
+                    <h1 class="centre-text">
+                        Creating the logo for the game.
+                    </h1>
+                    <h1 class="picture" id="picture1"></h1>
+                    <h1 class="description">
+                        I used inkscape and used vector art to make a knife and placed it over
+                        the letter R using the 'quicksand' font, with a safe license on Dafont.
+                    </h1>
                     `
             }
         },
