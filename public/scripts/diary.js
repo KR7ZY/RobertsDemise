@@ -26,6 +26,55 @@ const blogs = {
             "Blog": {
                 "content": `
                     <h1 class="description">
+                        Disclaimer - It does feel like most my blog entries are baremin and too summarised,
+                        but I did gain a lot of experience through throughout this project.
+                    </h1>
+                    <h1 class="centre-text">
+                        Details:
+                    </h1>
+                    <h1 class="description">
+                        Blog Title: Finalize
+                    </h1>
+                    <h1 class="description">
+                        Blog Date: 15th of April, 2025
+                    </h1>
+                    <h1 class="description">
+                        Blog Author: Robert Kenny
+                    </h1>
+                    <h1 class="description">
+                        Blog Diary: GameDevCS4043
+                    </h1>
+                    <h1 class="description">
+                        Project: CS4043 - Games Modelling Project
+                    </h1>
+                    <h1 class="description">
+                        Project Professor: Gavin Wade
+                    </h1>
+
+                    <h1 class="centre-text">
+                        Summary:
+                    </h1>
+                    <h1 class="description">
+                        Additional Implementations
+                    </h1>
+                    <h1 class="description">
+                        Building Process
+                    </h1>
+
+                    <h1 class="centre-text">
+                        Additional Implementations
+                    </h1>
+                `
+            }
+        },
+        "Branding": {
+            "Card": {
+                "title": "Branding",
+                "description": "Creating the branding for the game, including the final product video, images, and Itch.io information."
+            },
+            "Blog": {
+                "content": `
+                    <h1 class="description">
                         I made this is an example for the final product video, though I used it as a placeholder,
                         incase I didn't have time to make a better one.
                     </h1>
