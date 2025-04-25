@@ -329,39 +329,6 @@ function embedYouTubeVideos(container) {
     });
 }
 
-// Example usage in the renderBlogPost function
-function renderBlogPost(diaryName, blogName, blogData) {
-    const topCardDiv = document.querySelector(".top-card");
-    const blogContainer = document.querySelector(".blog");
-
-    if (!topCardDiv || !blogContainer) {
-        console.error("Required elements '.top-card' or '.blog' not found!");
-        return;
-    }
-
-    if (!blogData.Blog || !blogData.Blog.content) {
-        console.error(`Blog '${blogName}' in diary '${diaryName}' is missing 'Blog' data or 'content'.`);
-        blogContainer.innerHTML = `<h1 class='error'>Blog content not found.</h1>`;
-        return;
-    }
-
-    setBreadcrumbs(diaryName, blogName);
-
-    // Set top card info and background
-    topCardDiv.innerHTML = `
-        <h1>diary ~ ${diaryName}</h1>
-        <h1>blog ~ ${blogName}</h1>
-    `;
-    const thumbnailUrl = `${ASSET_BASE_PATH}/${diaryName}/${blogName}/thumbnail.jpg`;
-    topCardDiv.style.backgroundImage = `url('${thumbnailUrl}')`;
-
-    // Set blog content
-    blogContainer.innerHTML = blogData.Blog.content;
-
-    // Process .video elements
-    embedYouTubeVideos(blogContainer);
-}
-
 /**
  * Renders the index page for a specific diary.
  * @param {string} diaryName - The name of the diary.
@@ -444,7 +411,7 @@ function renderBlogPost(diaryName, blogName, blogData) {
      topCardDiv.style.backgroundImage = `url('${thumbnailUrl}')`;
 
 
-    // Set blog content
+    // Set blog content - This adds the .video div to the DOM
     blogContainer.innerHTML = blogData.Blog.content;
 
     // --- Process elements within the loaded content ---
@@ -464,9 +431,6 @@ function renderBlogPost(diaryName, blogName, blogData) {
         // Add error handling for background image loading itself
         picture.style.backgroundSize = 'cover'; // Example: ensure image covers the area
         picture.style.backgroundPosition = 'center'; // Example: center the image
-        // You might want to add an 'onerror' check if directly using <img> tags,
-        // but for background-image, the browser handles failures silently (shows nothing).
-        // Checking the network tab is the best way to debug background-image fails.
     });
 
     // Add functionality for elements with class "link"
@@ -483,7 +447,6 @@ function renderBlogPost(diaryName, blogName, blogData) {
         try {
             const url = new URL(urlString);
             const domainPart = url.hostname.replace(/^www\./, ''); // Keep TLD for clarity e.g., github.com
-            // Remove TLD -> .replace(/\.\w+$/, '');
             link.textContent = domainPart; // Display domain like 'github.com' or 'kr7zy.itch.io'
             link.style.cursor = 'pointer'; // Make it look clickable
             link.style.textDecoration = 'underline'; // Make it look clickable
@@ -498,6 +461,11 @@ function renderBlogPost(diaryName, blogName, blogData) {
             link.style.color = 'red';
         }
     });
+
+    // --- >>> ADD THIS LINE <<< ---
+    // Now that content is set, find .video elements and embed iframes
+    embedYouTubeVideos(blogContainer);
+    // --- >>> END OF ADDED LINE <<< ---
 }
 
 
