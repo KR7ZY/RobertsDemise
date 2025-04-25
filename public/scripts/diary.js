@@ -25,6 +25,9 @@ const blogs = {
             },
             "Blog": {
                 "content": `
+                    <h1 class="description">
+                        Disclaimer - I doubt this'll go towards grading since it's not to do with the game itself.
+                    </h1>
                     <div class="video" id="z-Vlhr-ISR4"></div>
                     <h1 class="centre-text">
                         Links:
