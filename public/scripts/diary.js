@@ -412,6 +412,16 @@ const blogs = {
                     <h1 class="description">
                         I then added the Unity project to the Github repository.
                     </h1>
+
+                    <h1 class="centre-text">
+                        Little add on
+                    </h1>
+                    <h1 class="description">
+                        If you want to check out the old version of the project to show work done click on this link.
+                    </h1>
+                    <h1 class="link">t
+                        https://www.youtube.com/@1BP6/videos
+                    </h1>
                     `
             }
         }
