@@ -125,3 +125,11 @@ html,body {
     background-position-y: bottom; transition: background-size 0.1s ease-in-out, 1s ease-in-out;
 }
 .blog .underline:hover {background-size: 100% 3px; cursor: pointer;}
+.blog .link {
+    font-size: 1.25rem; padding-left: 2.5%; width: 90%;
+    background-color: #b9c3c7; border-radius: 20px; opacity: 0.8;
+    transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    cursor: pointer;;
+} .blog .link:hover {
+    transform: translate(1rem, 0); opacity: 1;
+}
