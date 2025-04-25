@@ -68,6 +68,21 @@ const blogs = {
                         I used inkscape and used vector art to make a knife and placed it over
                         the letter R using the 'quicksand' font, with a safe license on Dafont.
                     </h1>
+                    <h1 class="link">
+                        https://www.dafont.com/quicksand.font
+                    </h1>
+                    <h1 class="description">
+                        I then added it to the build profile in the unity project and Itch.io page.
+                    </h1>
+
+                    <h1 class="centre-text">
+                        Creating the final product video and images.
+                    </h1>
+
+                    <h1 class="centre-text">
+                        Improving the Itch.io description.
+                    </h1>
+                    <div class="video" id="z-Vlhr-ISR4"></div>
                     `
             }
         },
