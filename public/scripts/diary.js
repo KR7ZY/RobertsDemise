@@ -18,7 +18,7 @@ const blogs = {
         }
     },
     "GameDevCS4043": {
-        "Branding": {
+        "Finalize": {
             "Card": {
                 "title": "Finalize",
                 "description": "My process towards the closing of the project, including some addiontal implementations and the building and transferring of the game."
