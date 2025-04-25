@@ -97,6 +97,12 @@ html,body {
     margin-left: 25vw; opacity: 0.7;
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
 }
+.video {
+    width: 560px;
+    height: 315px;
+    margin: 1rem auto;
+    position: relative;
+}
 .blog .picture:hover {opacity: 1; cursor: pointer; transform: scale(105%);}
 .blog .centre-text {
     width: 100%; text-align: center;
