@@ -26,8 +26,12 @@ const blogs = {
             "Blog": {
                 "content": `
                     <h1 class="description">
-                        Disclaimer - It does feel like most my blog entries are baremin and too summarised,
+                        Disclaimer 1 - It does feel like most my blog entries are baremin and too summarised,
                         but I did gain a lot of experience through throughout this project.
+                    </h1>
+                    <h1 class="description">
+                        Disclaimer 2 - It is obvious the game didn't reach the "game" part of the game,
+                        I am 100% sure I will continue to finish this game after the assessment.
                     </h1>
                     <h1 class="centre-text">
                         Details:
