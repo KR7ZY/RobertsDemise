@@ -97,12 +97,45 @@ html,body {
     margin-left: 25vw; opacity: 0.7;
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
 }
-.video {
-    width: 50vw; object-fit: cover; border-radius: 20px; aspect-ratio: 16/9;
-    background-color: var(--primary-bg-B); background-size: cover;
-    background-position-x: center; background-position-y: center;
-    margin-left: 25vw; opacity: 0.7;
+.blog .video {
+    /* --- Layout & Sizing (copied from .picture) --- */
+    width: 50vw;
+    margin-left: 25vw; /* Centers it like .picture */
+    aspect-ratio: 16/9; /* Ensures same shape */
+
+    /* --- Appearance (copied from .picture) --- */
+    border-radius: 20px; /* Makes the container round */
+    background-color: var(--primary-bg-B); /* Fallback color before iframe loads */
+
+    /* --- Crucial for containing the iframe --- */
+    position: relative; /* Establishes positioning context for the absolute iframe */
+    overflow: hidden; /* Ensures the iframe respects the border-radius */
+
+    /* --- Optional: Transition (copied from .picture) --- */
+    /* You might want this if you add hover effects to the container */
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+
+    /* --- Opacity REMOVED --- */
+    /* opacity: 0.7; */ /* REMOVED: Applying this here makes the video itself transparent. If you want a semi-transparent *overlay*, that's a different technique. */
+
+     /* --- Unnecessary properties for an iframe container --- */
+    /* object-fit: cover; */
+    /* background-size: cover; */
+    /* background-position-x: center; */
+    /* background-position-y: center; */
+}
+
+/* --- New CSS rule for the iframe INSIDE the .video container --- */
+.blog .video iframe {
+    /* --- Make iframe fill the container --- */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* --- Ensure no default border --- */
+    border: none;
 }
 .blog .picture:hover {opacity: 1; cursor: pointer; transform: scale(105%);}
 .blog .centre-text {
